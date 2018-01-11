@@ -10,6 +10,7 @@ public class Message implements IMessage {
 	private List<Texte> elements;
 	private Utilisateur auteur;
 
+	@Override
 	public List<Texte> getElements() {
 		return elements;
 	}
