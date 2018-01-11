@@ -31,4 +31,9 @@ public class Texte {
 		this.contenu = contenu;
 	}
 	
+	@Override
+	public String toString() {
+		return contenu;
+	}
+	
 }

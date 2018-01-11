@@ -12,4 +12,9 @@ public class Lien extends Texte {
 		this.url = url;
 	}
 
+	@Override
+	public String toString() {
+		return "<a href='"+ url + "'>" + super.toString() + "</a>";
+	}
+	
 }

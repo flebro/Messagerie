@@ -1,5 +1,5 @@
 package com.statut;
 
-public class EtatPresent {
+public class EtatPresent extends Etat {
 
 }

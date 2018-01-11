@@ -11,5 +11,10 @@ public class TexteColorise extends Texte {
 	public void setCouleurHex(String couleurHex) {
 		this.couleurHex = couleurHex;
 	}
+	
+	@Override
+	public String toString() {
+		return "<font color='"+ couleurHex + "'>" + super.toString() + "</font>";
+	}
 
 }

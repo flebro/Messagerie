@@ -35,7 +35,7 @@ public class Salon implements IObservable{
 	
 	public void publie(IMessage message) {
 		messages.add(message);
-		// Ici on notifie les utilisateurs
+		notifierObservateur();
 	}
 	
 	public void loadHistorique() {
