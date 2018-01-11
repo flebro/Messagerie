@@ -27,4 +27,10 @@ public class Message implements IMessage {
 		elements = new ArrayList<>();
 	}
 
+	@Override
+	public void formatter(IMessageFormatter f) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
