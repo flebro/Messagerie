@@ -8,24 +8,15 @@ import com.messagerie.Utilisateur;
 public class Message implements IMessage {
 	
 	private List<Texte> elements;
-	private Utilisateur auteur;
 
 	@Override
 	public List<Texte> getElements() {
 		return elements;
 	}
 	
-	public Utilisateur getAuteur() {
-		return auteur;
-	}
-
-	public void setAuteur(Utilisateur auteur) {
-		this.auteur = auteur;
-	}
-
-	public Message(Utilisateur auteur) {
-		this.auteur = auteur;
+	public Message(String contenu) {
 		elements = new ArrayList<>();
+		elements.add(new Texte(contenu));
 	}
 
 }

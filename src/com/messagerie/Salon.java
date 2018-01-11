@@ -3,6 +3,7 @@ package com.messagerie;
 import java.util.List;
 
 import com.messagerie.message.IMessage;
+import com.messagerie.message.proxy.ListMessage;
 
 public class Salon {
 	
@@ -19,7 +20,7 @@ public class Salon {
 	}
 
 	private Salon() {
-		
+		messages = new ListMessage(20);
 	}
 	
 	public static Salon getInstance() {
@@ -30,7 +31,12 @@ public class Salon {
 	}
 	
 	public void publie(IMessage message) {
-		
+		messages.add(message);
+		// Ici on notifie les utilisateurs
+	}
+	
+	public void loadHistorique() {
+		((ListMessage) messages).loadPage();
 	}
 
 }

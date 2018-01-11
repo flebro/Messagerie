@@ -25,4 +25,10 @@ public class Texte {
 		this.suivant = suivant;
 	}
 	
+	public Texte() {}
+	
+	public Texte(String contenu) {
+		this.contenu = contenu;
+	}
+	
 }
