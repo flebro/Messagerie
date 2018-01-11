@@ -17,7 +17,7 @@ public class Utilisateur implements IObservateur {
 	public void actualiser(IObservable o) {
 		// afficher message
 		System.out.println("afffichage des messages pour les utilisateurs");
-		//if(etat.)
+		
 		
 
 	}
