@@ -12,8 +12,9 @@ public abstract class Chercheur {
 	
 	private Chercheur _suivant;
 	
-	public void setSuivant(Chercheur suivant) {
+	public Chercheur setSuivant(Chercheur suivant) {
 		_suivant = suivant;
+		return this;
 	}
 	
 	public IMessage rechercher(String recherche) {
