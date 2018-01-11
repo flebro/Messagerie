@@ -19,4 +19,10 @@ public class Message implements IMessage {
 		elements.add(new Texte(contenu));
 	}
 
+	@Override
+	public void formatter(IMessageFormatter f) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
