@@ -1,6 +1,6 @@
 package com.messagerie.message;
 
-public class Texte {
+public class Texte extends Element {
 
 	private String contenu;
 	private Texte precedent;
@@ -23,6 +23,17 @@ public class Texte {
 	}
 	public void setSuivant(Texte suivant) {
 		this.suivant = suivant;
+	}
+	
+	public Texte() {}
+	
+	public Texte(String contenu) {
+		this.contenu = contenu;
+	}
+	
+	@Override
+	public String toString() {
+		return contenu;
 	}
 	
 }

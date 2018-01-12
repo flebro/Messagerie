@@ -1,6 +1,6 @@
 package com.messagerie.message;
 
-public class Lien extends Texte {
+public class Lien extends ElementComposite {
 	
 	private String url;
 
@@ -12,4 +12,14 @@ public class Lien extends Texte {
 		this.url = url;
 	}
 
+	@Override
+	protected String getDebutToString() {
+		return "<a href='"+ url + "'>";
+	}
+
+	@Override
+	protected String getFinToString() {
+		return "</a>";
+	}
+	
 }
