@@ -9,5 +9,6 @@ public interface IMessage {
 	void formatter(IMessageFormatter f);
 	
 	List<Element> getElements();
+	void setElements(List<Element> elements);
 	
 }

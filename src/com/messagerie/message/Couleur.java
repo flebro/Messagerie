@@ -12,6 +12,12 @@ public class Couleur extends ElementComposite {
 		this.couleurHex = couleurHex;
 	}
 	
+	public Couleur() {}
+	
+	public Couleur(String hex) {
+		couleurHex = hex;
+	}
+	
 	@Override
 	protected String getDebutToString() {
 		return "<font color='"+ couleurHex + "'>";

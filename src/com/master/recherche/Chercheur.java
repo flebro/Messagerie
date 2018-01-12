@@ -11,9 +11,6 @@ import com.messagerie.message.IMessage;
 
 public abstract class Chercheur {
 	
-	private static final String PATTERN_COULEUR = "#";
-	private static final String PATTERN_LIEN = "http://";
-	
 	private Chercheur _suivant;
 	
 	private final Predicate<String> _predicatDeclenchement;
@@ -59,11 +56,5 @@ public abstract class Chercheur {
 		}
 		return false;
 	}
-	
-	protected final static boolean isCouleur(String recherche) {
-		return recherche.startsWith(PATTERN_COULEUR);
-	}
-	protected final static boolean isLien(String recherche) {
-		return recherche.startsWith(PATTERN_LIEN);
-	}
+
 }

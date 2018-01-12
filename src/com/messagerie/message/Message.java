@@ -8,6 +8,9 @@ import com.messagerie.formatting.IMessageFormatter;
 
 public class Message implements IMessage {
 	
+	private static final String PATTERN_COULEUR = "#";
+	private static final String PATTERN_LIEN = "http://";
+	
 	private List<Element> elements;
 	
 	private Utilisateur auteur;
@@ -17,8 +20,11 @@ public class Message implements IMessage {
 		return elements;
 	}
 	
-	
-	
+	@Override
+	public void setElements(List<Element> elements) {
+		this.elements = elements;
+	}
+
 	public Utilisateur getAuteur() {
 		return auteur;
 	}
@@ -34,13 +40,20 @@ public class Message implements IMessage {
 
 	@Override
 	public void formatter(IMessageFormatter f) {
-		// TODO Auto-generated method stub
+		f.appliquer(this);
 		
 	}
 	
 	@Override
 	public String toString() {
-		return auteur.toString() + " : " + Element.join(elements);
+		return auteur != null ? auteur.toString() : "" + " : " + Element.join(elements);
 	}
 
+	public final static boolean isCouleur(String recherche) {
+		return recherche.startsWith(PATTERN_COULEUR);
+	}
+	public final static boolean isLien(String recherche) {
+		return recherche.startsWith(PATTERN_LIEN);
+	}
+	
 }

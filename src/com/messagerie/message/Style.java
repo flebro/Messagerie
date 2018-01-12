@@ -12,6 +12,11 @@ public class Style extends ElementComposite {
 		this.tag = tag;
 	}
 
+	public Style() {}
+	public Style(String tag) {
+		this.tag = tag;
+	}
+	
 	@Override
 	protected String getDebutToString() {
 		return "<" + tag + ">";

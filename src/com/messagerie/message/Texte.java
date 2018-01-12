@@ -1,5 +1,7 @@
 package com.messagerie.message;
 
+import java.util.List;
+
 public class Texte extends Element {
 
 	private String contenu;
@@ -28,7 +30,11 @@ public class Texte extends Element {
 	public Texte() {}
 	
 	public Texte(String contenu) {
-		this.contenu = contenu;
+		this.contenu = String.join(" ", contenu);
+	}
+	
+	public Texte(List<String> parts) {
+		this.contenu = String.join(" ", parts);
 	}
 	
 	@Override

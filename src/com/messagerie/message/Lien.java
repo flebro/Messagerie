@@ -12,6 +12,12 @@ public class Lien extends ElementComposite {
 		this.url = url;
 	}
 
+	public Lien() {}
+	
+	public Lien(String url) {
+		this.url = url;
+	}
+	
 	@Override
 	protected String getDebutToString() {
 		return "<a href='"+ url + "'>";

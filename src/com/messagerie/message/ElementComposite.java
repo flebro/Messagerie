@@ -11,6 +11,10 @@ public abstract class ElementComposite extends Element {
 		return children;
 	}
 	
+	public void setChildren(List<Element> children) {
+		this.children = children;
+	}
+
 	public boolean addChildren(Element element) {
 		return children.add(element);
 	}

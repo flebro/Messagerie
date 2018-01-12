@@ -1,13 +1,16 @@
 package com.messagerie.formatting;
 
-import com.messagerie.message.IMessage;
+import com.messagerie.message.Couleur;
 
-public class MessageColorFormatter implements IMessageFormatter {
+public class MessageColorFormatter extends MessageFormatter<Couleur> {
+
+	public MessageColorFormatter() {
+		super("[color=", "[/color]");
+	}
 	
 	@Override
-	public void appliquer(IMessage m) {
-		// TODO Auto-generated method stub
-		
+	protected Couleur buildElement(String data) {
+		return new Couleur(data.substring(7, data.length() - 1));
 	}
 	
 }
