@@ -1,5 +1,6 @@
 package com.messagerie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.messagerie.formatting.IMessageFormatter;
@@ -26,6 +27,9 @@ public class Salon implements IObservable{
 
 	private Salon() {
 		messages = new ListMessage(20);
+		observateurs= new ArrayList<>();
+		messages= new ArrayList<>();
+		formatters=new ArrayList<>();
 	}
 	
 	public static Salon getInstance() {

@@ -36,6 +36,7 @@ public class Message implements IMessage {
 	public Message(String contenu) {
 		elements = new ArrayList<>();
 		elements.add(new Texte(contenu));
+		auteur=new Utilisateur(null);
 	}
 
 	@Override

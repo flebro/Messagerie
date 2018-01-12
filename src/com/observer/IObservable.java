@@ -1,5 +1,7 @@
 package com.observer;
 
+import java.util.List;
+
 import com.messagerie.message.IMessage;
 
 public interface IObservable {
