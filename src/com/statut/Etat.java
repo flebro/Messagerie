@@ -13,7 +13,7 @@ public abstract class Etat {
 	public void setPresent(Utilisateur u) {
 		if (u.getEtat() instanceof EtatAbsent) {
 			for (IMessage enAttente : ((EtatAbsent) u.getEtat()).getMessagesEnAttente()) {
-				
+				u.affiche(enAttente);
 			}
 		}
 		
