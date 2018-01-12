@@ -1,6 +1,6 @@
 package com.messagerie.message;
 
-public class Texte {
+public class Texte extends Element {
 
 	private String contenu;
 	private Texte precedent;

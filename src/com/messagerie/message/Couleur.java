@@ -1,6 +1,6 @@
 package com.messagerie.message;
 
-public class TexteColorise extends Texte {
+public class Couleur extends ElementComposite {
 	
 	private String couleurHex;
 
@@ -13,8 +13,13 @@ public class TexteColorise extends Texte {
 	}
 	
 	@Override
-	public String toString() {
-		return "<font color='"+ couleurHex + "'>" + super.toString() + "</font>";
+	protected String getDebutToString() {
+		return "<font color='"+ couleurHex + "'>";
+	}
+
+	@Override
+	protected String getFinToString() {
+		return "</font>";
 	}
 
 }

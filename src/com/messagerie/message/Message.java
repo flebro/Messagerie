@@ -2,19 +2,18 @@ package com.messagerie.message;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.messagerie.Utilisateur;
 import com.messagerie.formatting.IMessageFormatter;
 
 public class Message implements IMessage {
 	
-	private List<Texte> elements;
+	private List<Element> elements;
 	
 	private Utilisateur auteur;
 
 	@Override
-	public List<Texte> getElements() {
+	public List<Element> getElements() {
 		return elements;
 	}
 	
@@ -41,7 +40,7 @@ public class Message implements IMessage {
 	
 	@Override
 	public String toString() {
-		return auteur.toString() + " : " + String.join(" ", elements.stream().map(Texte::toString).collect(Collectors.toList()));
+		return auteur.toString() + " : " + Element.join(elements);
 	}
 
 }

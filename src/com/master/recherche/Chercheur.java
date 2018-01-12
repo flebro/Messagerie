@@ -1,8 +1,12 @@
 package com.master.recherche;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import com.messagerie.Salon;
+import com.messagerie.message.Element;
+import com.messagerie.message.ElementComposite;
 import com.messagerie.message.IMessage;
 
 public abstract class Chercheur {
@@ -12,26 +16,54 @@ public abstract class Chercheur {
 	
 	private Chercheur _suivant;
 	
+	private final Predicate<String> _predicatDeclenchement;
+	private final BiPredicate<Element, String> _predicatRecherche;
+	
 	public Chercheur setSuivant(Chercheur suivant) {
 		_suivant = suivant;
 		return this;
 	}
 	
+	public Chercheur(Predicate<String> predicatDeclenchement, BiPredicate<Element, String> predicatRecherche) {
+		_predicatDeclenchement = predicatDeclenchement;
+		_predicatRecherche = predicatRecherche;
+	}
+	
 	public IMessage rechercher(String recherche) {
 		Salon salon = Salon.getInstance(); 
-		IMessage resultat = trouve(salon.getMessages(), recherche);
+		IMessage resultat = null;
+		if (_predicatDeclenchement.test(recherche)) {
+			for (IMessage message : salon.getMessages()) {
+				if (found(message.getElements(), recherche)) {
+					resultat = message;
+					break;
+				}
+			}
+		}
 		if (resultat == null && _suivant != null) {
-			return _suivant.trouve(salon.getMessages(), recherche);
+			return _suivant.rechercher(recherche);
 		}
 		return resultat;
 	}
 	
-	protected abstract IMessage trouve(List<IMessage> messages, String recherche);
+	protected boolean found(List<Element> elements, String recherche) {
+		for (Element element : elements) {
+			if (_predicatRecherche.test(element, recherche)) {
+				return true;
+			} 
+			if (element instanceof ElementComposite) {
+				if (found(((ElementComposite) element).getChildren(), recherche)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
-	protected final boolean isCouleur(String recherche) {
+	protected final static boolean isCouleur(String recherche) {
 		return recherche.startsWith(PATTERN_COULEUR);
 	}
-	protected final boolean isLien(String recherche) {
+	protected final static boolean isLien(String recherche) {
 		return recherche.startsWith(PATTERN_LIEN);
 	}
 }

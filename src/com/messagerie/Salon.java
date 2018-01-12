@@ -2,6 +2,7 @@ package com.messagerie;
 
 import java.util.List;
 
+import com.messagerie.formatting.IMessageFormatter;
 import com.messagerie.message.IMessage;
 import com.messagerie.message.proxy.ListMessage;
 import com.observer.IObservable;
@@ -13,6 +14,7 @@ public class Salon implements IObservable{
 	
 	private List<IMessage> messages;
 	private List<IObservateur> observateurs;
+	private List<IMessageFormatter> formatters;
 	
 	public List<IMessage> getMessages() {
 		return messages;
@@ -34,8 +36,9 @@ public class Salon implements IObservable{
 	}
 	
 	public void publie(IMessage message) {
+		formatters.forEach(f -> message.formatter(f));
 		messages.add(message);
-		notifierObservateur();
+		notifierObservateur(message);
 	}
 	
 	public void loadHistorique() {
@@ -55,9 +58,9 @@ public class Salon implements IObservable{
 	}
 
 	@Override
-	public void notifierObservateur() {
+	public void notifierObservateur(IMessage nouveauMessage) {
 		for (IObservateur observer : this.observateurs) {
-			observer.actualiser(this);
+			observer.actualiser(nouveauMessage);
 		}
 	}
 

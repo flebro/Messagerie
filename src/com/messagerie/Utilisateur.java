@@ -25,18 +25,13 @@ public class Utilisateur implements IObservateur {
 	}
 
 	@Override
-	public void actualiser(IObservable o) {
+	public void actualiser(IMessage m) {
 		// afficher message
 		if (etat instanceof EtatPresent) {
-			
+			System.out.println(m.toString());
 		} else if (etat instanceof EtatAbsent) {
-			
+			((EtatAbsent)etat).getMessagesEnAttente().add(m);
 		}
-		
-		System.out.println("afffichage des messages pour les utilisateurs");
-		//if(etat.)
-		
-
 	}
 	
 	public void affiche(IMessage message) {

@@ -3,17 +3,14 @@ package com.master.recherche;
 import java.util.List;
 
 import com.messagerie.message.IMessage;
+import com.messagerie.message.Lien;
+import com.messagerie.message.Texte;
 
 public class TexteChercheur extends Chercheur {
-	@Override
-	protected IMessage trouve(List<IMessage> messages, String recherche) {
-		if (!isLien(recherche) && !isCouleur(recherche)) {
-			for (IMessage message : messages) {
-				if (message.getElements().stream().filter(e -> e.getContenu().contains(recherche)).findAny().isPresent()) {
-					return message;
-				}
-			}
-		}
-		return null;
+	
+	public TexteChercheur() {
+		super(recherche -> !isLien(recherche) && !isCouleur(recherche), 
+				(element, recherche) -> element instanceof Texte && ((Texte) element).getContenu().contains(recherche));
 	}
+
 }

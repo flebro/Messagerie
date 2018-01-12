@@ -8,6 +8,6 @@ public interface IMessage {
 	
 	void formatter(IMessageFormatter f);
 	
-	List<Texte> getElements();
+	List<Element> getElements();
 	
 }

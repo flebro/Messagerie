@@ -1,7 +1,9 @@
 package com.observer;
 
+import com.messagerie.message.IMessage;
+
 public interface IObservateur {
 	
-	void actualiser(IObservable o);
+	void actualiser(IMessage m);
 
 }
