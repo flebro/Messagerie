@@ -33,10 +33,10 @@ public class Message implements IMessage {
 		this.auteur = auteur;
 	}
 
-	public Message(String contenu) {
+	public Message(String contenu, Utilisateur auteur) {
 		elements = new ArrayList<>();
 		elements.add(new Texte(contenu));
-		auteur=new Utilisateur(null);
+		this.auteur = auteur;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class Message implements IMessage {
 	
 	@Override
 	public String toString() {
-		return auteur != null ? auteur.toString() : "" + " : " + Element.join(elements);
+		return auteur.getNom() + " : " + Element.join(elements);
 	}
 
 	public final static boolean isCouleur(String recherche) {

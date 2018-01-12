@@ -8,7 +8,6 @@ public class EnregistrerJSON implements ICommand<Void>{
 	JSONPersister jsonPersister;
 
 	public EnregistrerJSON(JSONPersister jsonPersister) {
-		super();
 		this.jsonPersister = jsonPersister;
 	}
 

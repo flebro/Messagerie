@@ -8,7 +8,6 @@ public class EnregistrerHTML implements ICommand<Void> {
 	HTMLPersister htmlPersister;
 
 	public EnregistrerHTML(HTMLPersister htmlPersister) {
-		super();
 		this.htmlPersister = htmlPersister;
 	}
 

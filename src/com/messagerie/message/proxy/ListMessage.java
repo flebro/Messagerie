@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+import com.messagerie.Utilisateur;
 import com.messagerie.message.IMessage;
 import com.messagerie.message.Message;
 
@@ -16,27 +17,34 @@ public class ListMessage extends ArrayList<IMessage> {
 	
 	public ListMessage(int elementsParPage) {
 		_elementsParPage = elementsParPage;
+		_dataSource = new ArrayList<>();
+		loadPage();
 	}
 	
 	@Override
 	public Iterator<IMessage> iterator() {
-		// TODO Auto-generated method stub
-		return super.iterator();
+		return _dataSource.iterator();
 	}
 	
 	@Override
 	public void forEach(Consumer<? super IMessage> action) {
-		// TODO Auto-generated method stub
-		super.forEach(action);
+		_dataSource.forEach(action);
+	}
+	
+	@Override
+	public boolean add(IMessage e) {
+		return _dataSource.add(e);
 	}
 	
 	public void loadPage() {
-		if (_dataSource == null) {
-			_dataSource = new ArrayList<>();
-			for (int i=0; i < _elementsParPage ; i++) {
-				_dataSource.add(new Message(UUID.randomUUID().toString()));
-			}
+		for (int i=0; i < _elementsParPage ; i++) {
+			Utilisateur randomUser = new Utilisateur(randomString().substring(0, 4));
+			_dataSource.add(0, new Message(randomString(), randomUser));
 		}
+	}
+	
+	private String randomString() {
+		return UUID.randomUUID().toString();
 	}
 
 	

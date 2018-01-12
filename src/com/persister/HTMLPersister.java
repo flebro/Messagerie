@@ -1,5 +1,5 @@
 package com.persister;
 
-public class HTMLPersister extends Persister{
+public class HTMLPersister extends Persister {
 
 }

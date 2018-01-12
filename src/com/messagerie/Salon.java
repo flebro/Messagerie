@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.messagerie.formatting.IMessageFormatter;
+import com.messagerie.formatting.MessageBoldFormatter;
+import com.messagerie.formatting.MessageColorFormatter;
+import com.messagerie.formatting.MessageLinkFormatter;
 import com.messagerie.message.IMessage;
 import com.messagerie.message.proxy.ListMessage;
 import com.observer.IObservable;
@@ -26,10 +29,12 @@ public class Salon implements IObservable{
 	}
 
 	private Salon() {
-		messages = new ListMessage(20);
+		messages = new ListMessage(5);
 		observateurs= new ArrayList<>();
-		messages= new ArrayList<>();
 		formatters=new ArrayList<>();
+		formatters.add(new MessageBoldFormatter());
+		formatters.add(new MessageLinkFormatter());
+		formatters.add(new MessageColorFormatter());
 	}
 	
 	public static Salon getInstance() {
@@ -47,6 +52,7 @@ public class Salon implements IObservable{
 	
 	public void loadHistorique() {
 		((ListMessage) messages).loadPage();
+		messages.forEach(m -> notifierObservateur(m));
 	}
 
 	@Override
